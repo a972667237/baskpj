@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Detail Pages~~</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <link rel="alternate icon" type="image/png" href="/static/assets/i/favicon.png">
+  <link rel="stylesheet" href="/static/assets/css/amazeui.min.css"/>
+  <link rel="stylesheet" href="/static/css/detail.css">
+  <script type="text/javascript" src="/static/ueditor/ueditor.config.js"></script>
+  <script type="text/javascript" src="/static/ueditor/ueditor.all.min.js"></script>
+</head>
+<body>
+<header class="am-topbar am-topbar-fixed-top">
+  <div class="am-container">
+    <h1 class="am-topbar-brand">
+      <a href="#">NBA</a>
+    </h1>
+    <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-secondary am-show-sm-only"
+            data-am-collapse="{target: '#collapse-head'}"><span class="am-sr-only">导航切换</span> <span
+        class="am-icon-bars"></span></button>
+    <div class="am-collapse am-topbar-collapse" id="collapse-head">
+      <ul class="am-nav am-nav-pills am-topbar-nav">
+        <li><a href="/">首页</a></li>
+        <li><a href="/manage">球星列表</a></li>
+      </ul>
+      <div class="am-topbar-right">
+        <button class="am-btn am-btn-primary am-topbar-btn am-btn-sm login-btn"><span class="am-icon-user"></span> 登录</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="get">
+  <p class="name">Stphen curry</p>
+</div>
+<div class="content">
+  <p>我是可爱的内容</p>
+</div>
+<hr>
+<form class="comment" action="/comment/" method="POST">
+  {{forms.as_p }}
+  <input type="hidden" name="id" value="{{star_id}}">
+  <input type="submit" value="提交" class="am-btn am-btn-primary am-topbar-btn am-btn-sm">
+</form>
+{% autoescape off %}
+{% for each_comment in info %}
+<div class="comments_place">
+  <div class="each_comment">
+    用户名：<b>{{each_comment.nick}}</b>
+    <br>
+    内容：<span>{{each_comment.content}}</span>
+  </div>
+</div>
+{% endfor %}
+{% endautoescape %}
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="/static/assets/js/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="/static/assets/js/amazeui.min.js"></script>
+<script src="/static/js/user.js" charset="utf-8"></script>
+<script type="text/javascript">
+  $(function(){
+    $.get('/getDetail'+window.location.search, function(res){
+      $('.name').html(res.name);
+      $('.content').html(res.introduce);
+    });
+    $('.login-btn').on('click', function(){
+      if($('.login-btn').hasClass('am-btn-danger')){
+        $.post('/account/logout/', res => {
+          history.go(0);
+        });
+      }else{
+        $(location).attr('href', '/login');
+      }
+    });
+  })
+</script>
+</body>
+</html>

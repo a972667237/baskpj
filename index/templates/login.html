@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Login Page | Amaze UI Example</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <link rel="alternate icon" type="image/png" href="/static/assets/i/favicon.png">
+  <link rel="stylesheet" href="/static/assets/css/amazeui.min.css"/>
+  <link rel="stylesheet" href="/static/css/login.css">
+</head>
+<body>
+  <header class="am-topbar am-topbar-fixed-top">
+    <div class="am-container">
+      <h1 class="am-topbar-brand">
+        <a href="#">NBA</a>
+      </h1>
+      <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-secondary am-show-sm-only"
+              data-am-collapse="{target: '#collapse-head'}"><span class="am-sr-only">导航切换</span> <span
+          class="am-icon-bars"></span></button>
+      <div class="am-collapse am-topbar-collapse" id="collapse-head">
+        <ul class="am-nav am-nav-pills am-topbar-nav">
+          <li><a href="/">首页</a></li>
+          <li><a href="/manage">球星列表</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+<div class="am-g content">
+  <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
+
+    <div class="am-tabs" id="doc-my-tabs">
+      <ul class="am-tabs-nav am-nav am-nav-tabs am-nav-justify">
+        <li class="am-active"><a href="">登录</a></li>
+        <li><a href="">注册</a></li>
+        <li><a href="">微信扫码</a></li>
+      </ul>
+      <div class="am-tabs-bd">
+        <div class="am-tab-panel am-active">
+          <div class="am-form" id="login_form">
+          <label for="login_email">邮箱:</label>
+          <input type="email" name="login_email" id="login_email" value="">
+          <br>
+          <label for="login_password">密码:</label>
+          <input type="password" name="login_password" id="login_password" value="">
+          <br>
+          <div class="am-cf">
+            <button class="am-btn am-btn-primary am-fl login-btn">登 录</button>
+          </div>
+        </div>
+      </div>
+        <div class="am-tab-panel">
+          <div class="am-form" id="register_form">
+          <label for="register_nick">昵称:</label>
+          <input type="text" name="register_nick" id="register_nick" value="">
+          <br>
+          <label for="register_email">邮箱:</label>
+          <input type="email" name="register_email" id="register_email" value="">
+          <br>
+          <label for="register_password">密码:</label>
+          <input type="password" name="register_password" id="register_password" value="">
+          <br>
+          <div class="am-cf">
+            <button class="am-btn am-btn-primary am-fl register-btn">注 册</button>
+          </div>
+        </div>
+        </div>
+        <div class="am-tab-panel">我是二维码</div>
+      </div>
+    </div>
+    <hr>
+  </div>
+</div>
+
+<div class="am-modal am-modal-no-btn" tabindex="-1" id="your-modal">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd md-title">Modal 标题
+      <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+    </div>
+    <div class="am-modal-bd md-content">
+      Modal 内容。
+    </div>
+  </div>
+</div>
+
+<script src="/static/assets/js/jquery.min.js" charset="utf-8"></script>
+<script src="/static/assets/js/amazeui.min.js"></script>
+<script src="/static/js/login.js" charset="utf-8"></script>
+<script src="/static/js/user.js" charset="utf-8"></script>
+<script>
+  $(function() {
+    $('#doc-my-tabs').tabs();
+  })
+</script>
+</body>
+</html>
